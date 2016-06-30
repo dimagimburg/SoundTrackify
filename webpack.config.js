@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     entry: [
         'react-hot-loader/patch',
@@ -22,6 +24,12 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        hot: true
-    }
+        hot: true,
+        historyApiFallback: true
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        })
+    ]   
 };
