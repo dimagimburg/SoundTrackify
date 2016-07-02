@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { CLIENT_ID } from '../../constants/auth';
-import Connection from '../Connection'
 
 class Stream extends Component {
 
@@ -24,8 +23,6 @@ class Stream extends Component {
 
         return (
             <div>
-                <Connection />
-                <br/>
                 <div>
                     {
                         tracks.map((track, key) => {

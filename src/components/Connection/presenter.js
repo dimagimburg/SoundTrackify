@@ -7,9 +7,9 @@ export default class Connection extends Component {
             <div>
                 {
                     isAuthenticated ?
-                    <div>hi {user.username}<button onClick={onLogout}>Logout</button></div>
+                    <div>Hi <b>{user.username}</b><button className="btn btn-default" onClick={onLogout}>Logout</button></div>
                     :
-                    <div><button onClick={onLogin}>Login</button></div>
+                    <div><button className="btn btn-primary" onClick={onLogin}>Login</button></div>
                 }
             </div>
         )
