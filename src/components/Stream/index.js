@@ -6,9 +6,7 @@ import * as actions from '../../actions';
 
 function mapStateToProps(state) {
     const { tracks, activeTrack } = state.track;
-    const { user } = state.auth;
     return {
-        user,
         tracks,
         activeTrack
     }
@@ -16,7 +14,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onAuth: bindActionCreators(actions.auth, dispatch),
         onPlay: bindActionCreators(actions.playTrack, dispatch)
     };
 }

@@ -11,11 +11,15 @@ import App from './components/App';
 import Callback from './components/Callback';
 
 import SC from 'soundcloud';
+import localStorage from 'local-storage';
 
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
+if(localStorage.get('sc_session_token')){
+    store.dispatch(actions.checkInitialAuth(localStorage.get('sc_session_token')));
+}
 
 export default class Wrapper extends Component {
     render() {

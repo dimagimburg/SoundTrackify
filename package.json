@@ -52,6 +52,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "js-cookie": "^2.1.0",
+    "local-storage": "^1.4.2",
     "lodash": "^4.10.0",
     "moment": "^2.12.0",
     "normalizr": "^2.0.0",

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { CLIENT_ID } from '../../constants/auth';
+import Connection from '../Connection'
 
 class Stream extends Component {
 
@@ -19,17 +20,11 @@ class Stream extends Component {
     }
 
     render () {
-        const { user, tracks = [], activeTrack, onAuth, onPlay } = this.props;
+        const { tracks = [], activeTrack, onPlay } = this.props;
 
         return (
             <div>
-                <div>
-                    {
-                        user ?
-                            <div>{user.username}</div> :
-                            <button onClick={onAuth} type="button">Login</button>
-                    }
-                </div>
+                <Connection />
                 <br/>
                 <div>
                     {

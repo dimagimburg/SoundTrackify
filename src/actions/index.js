@@ -1,8 +1,10 @@
-import { auth } from './auth';
 import { setTracks, playTrack } from './track';
+import { loginUser, logoutUser, checkInitialAuth } from './connection';
 
 export {
-    auth,
     setTracks,
-    playTrack
+    playTrack,
+    loginUser,
+    logoutUser,
+    checkInitialAuth
 };
