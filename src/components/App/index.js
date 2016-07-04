@@ -1,16 +1,18 @@
 import React from 'react';
 import TopNavBar from '../TopNavBar';
+import CSSModules from 'react-css-modules';
 import styles from './App.css';
+
 
 function App({ children }) {
     return (
-        <div className={styles.appWrapper}>
+        <div styleName="app-wrapper">
             <TopNavBar />
-            <div className={styles.content}>
+            <div styleName="content">
                 {children}
             </div>
         </div>
     );
 }
 
-export default App;
+export default CSSModules(App, styles);

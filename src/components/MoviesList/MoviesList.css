@@ -1,0 +1,13 @@
+.movies-list{
+    padding: 0;
+    list-style: none;
+}
+
+.movie{
+    padding: 7px;
+}
+
+.movie:hover{
+    color: #fff;
+    cursor: default;
+}

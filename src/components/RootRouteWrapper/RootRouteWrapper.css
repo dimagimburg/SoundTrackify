@@ -1,12 +1,14 @@
-.container{
+.root-container{
     height: 100%;
 }
 
-.row{
+.root-row{
     height: 100%;
 }
 
-.left{
+.root-left{
     overflow: auto;
     height: 100%;
+    background: #282828;
+    padding: 0;
 }
