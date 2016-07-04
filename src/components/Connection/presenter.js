@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import styles from './Connection.css';
 
-export default class Connection extends Component {
+let Connection;
+
+Connection = class Connection extends Component {
     render() {
         const { user, isAuthenticated, isFetching , onLogin, onLogout} = this.props;
         return (
-            <div className={styles.connectionWrapper}>
+            <div styleName="connection-wrapper">
                 {
                     isAuthenticated ?
-                    <div><span className={styles.connectionText}>Hi <b>{user.id}</b></span> <button className={"btn btn-default " + styles.logoutButton} onClick={onLogout}>Logout</button></div>
+                    <div><span styleName="connection-text">Hi <b>{user.id}</b></span> <button className="btn btn-default" styleName="logout-button" onClick={onLogout}>Logout</button></div>
                     :
-                    <div><button className={"btn btn-primary " + styles.loginButton} onClick={onLogin}>Login</button></div>
+                    <div><button className="btn btn-primary" styleName="login-button" onClick={onLogin}>Login</button></div>
                 }
             </div>
         )
     }
-}
+};
+
+export default CSSModules(Connection, styles);

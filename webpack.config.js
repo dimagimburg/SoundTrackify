@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -16,7 +17,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+                loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
             }
         ]
     },
@@ -36,6 +37,9 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        }),
+        new ExtractTextPlugin('app.css', {
+            allChunks: true
         })
     ]   
 };

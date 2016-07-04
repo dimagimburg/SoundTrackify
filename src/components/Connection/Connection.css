@@ -1,26 +1,29 @@
-.connectionWrapper{
+.connection-wrapper{
     margin-top: 7px;
 }
 
-.connectionText{
+.connection-text{
     position: relative;
     top:1px;
 }
 
-.logoutButton,.loginButton{
+.logout-button,.login-button{
     transition: all 250ms;
 }
 
-.logoutButton:hover{
+.logout-button:hover{
     background: rgba(0, 0, 0, 0.08);
 }
 
-.loginButton{
-    background: #1ED760;
-    border: 1px solid #1eb661;
+.login-button{
+    background: #2ebd59;
+    border: 0;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
 }
 
-.loginButton:hover,.loginButton:focus{
-    background: #1ca754 !important;
-    border: 1px solid #1eb661 !important;
+.login-button:hover,.login-button:focus{
+    background: #2dcb5d !important;
+    border: 0;
 }
