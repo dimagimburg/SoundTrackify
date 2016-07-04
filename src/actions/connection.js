@@ -1,6 +1,6 @@
-import { CLIENT_ID, REDIRECT_URI } from '../constants/auth';
 import * as actionTypes from '../constants/actionTypes';
 import localStorage from 'local-storage';
+import * as authConstants from '../constants/auth'
 
 function requestLogin() {
     return {
@@ -47,25 +47,48 @@ function receiveLogout() {
 export function loginUser() {
     return dispatch => {
         dispatch(requestLogin());
-        SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
-        return SC.connect().then((session) => {
-            fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
+        var authURL =
+            authConstants.AUTHORIZE_URL + "?client_id=" +
+            authConstants.CLIENT_ID + "&redirect_uri=" +
+            encodeURIComponent(authConstants.REDIRECT_URI) + "" +
+            "&response_type=" + authConstants.RESPONSE_TYPE;
+
+        var width = 450,
+            height = 730,
+            left = (screen.width / 2) - (width / 2),
+            top = (screen.height / 2) - (height / 2);
+
+        var w = window.open(
+            authURL,
+            'Spotify',
+            'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
+        );
+
+        window.addEventListener("message", function(event) {
+            var hash = JSON.parse(event.data);
+            if (hash.type == 'access_token') {
+                callback(hash.access_token);
+            }
+        }, false);
+
+        var callback = function(token){
+            return fetch(authConstants.API_USER_DETAILS, {headers: { 'Authorization' : `Bearer ${token}`}})
                 .then((response) => response.json())
                 .then((user) => {
-                    localStorage.set('sc_session_token', session.oauth_token);
+                    localStorage.set(authConstants.LOCAL_STORAGE_TOKEN_KEY, token);
                     dispatch(receiveLogin(user));
                 });
-        });
+        };
     }
 }
 
 export function checkInitialAuth(token){
     return dispatch => {
         dispatch(requestLogin());
-        return fetch(`//api.soundcloud.com/me?oauth_token=${token}`)
+        return fetch(authConstants.API_USER_DETAILS, {headers: { 'Authorization' : `Bearer ${token}`}})
             .then((response) => response.json())
             .then((user) => {
-                localStorage.set('sc_session_token', token);
+                localStorage.set(authConstants.LOCAL_STORAGE_TOKEN_KEY, token);
                 dispatch(receiveLogin(user));
             });
     }
@@ -74,7 +97,7 @@ export function checkInitialAuth(token){
 export function logoutUser() {
     return dispatch => {
         dispatch(requestLogout());
-        localStorage.remove('sc_session_token');
+        localStorage.remove(authConstants.LOCAL_STORAGE_TOKEN_KEY);
         dispatch(receiveLogout());
     }
 }

@@ -6,3 +6,21 @@
     position: relative;
     top:1px;
 }
+
+.logoutButton,.loginButton{
+    transition: all 250ms;
+}
+
+.logoutButton:hover{
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.loginButton{
+    background: #1ED760;
+    border: 1px solid #1eb661;
+}
+
+.loginButton:hover,.loginButton:focus{
+    background: #1ca754 !important;
+    border: 1px solid #1eb661 !important;
+}

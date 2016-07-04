@@ -7,14 +7,14 @@ import * as actions from './actions';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import SC from 'soundcloud';
 import localStorage from 'local-storage';
+import * as authConstants from './constants/auth';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
-if(localStorage.get('sc_session_token')){
-    store.dispatch(actions.checkInitialAuth(localStorage.get('sc_session_token')));
+if(localStorage.get(authConstants.LOCAL_STORAGE_TOKEN_KEY)){
+    store.dispatch(actions.checkInitialAuth(localStorage.get(authConstants.LOCAL_STORAGE_TOKEN_KEY)));
 }
 
 export default class Wrapper extends Component {

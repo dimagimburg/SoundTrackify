@@ -4,7 +4,7 @@ import styles from './App.css';
 
 function App({ children }) {
     return (
-        <div>
+        <div className={styles.appWrapper}>
             <TopNavBar />
             <div className={styles.content}>
                 {children}

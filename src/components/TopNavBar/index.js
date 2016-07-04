@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Connection from '../Connection';
+import styles from './TopNavBar.css';
 
 class TopNavBar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-default navbar-fixed-top">
+            <nav className={"navbar navbar-default navbar-fixed-top " + styles.base}>
                 <div className="container">
                     <div className="navbar-header">
                         <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
@@ -14,7 +15,7 @@ class TopNavBar extends Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#">SoundCloudFave</a>
+                        <a className={"navbar-brand " + styles.brand} href="#"><img className={styles.logo} src="/static/img/Spotify_Icon_CMYK_Green.png" />&nbsp;SoundTrackify</a>
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav">

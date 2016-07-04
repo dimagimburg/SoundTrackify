@@ -1,0 +1,12 @@
+.container{
+    height: 100%;
+}
+
+.row{
+    height: 100%;
+}
+
+.left{
+    overflow: auto;
+    height: 100%;
+}

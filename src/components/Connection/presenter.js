@@ -8,9 +8,9 @@ export default class Connection extends Component {
             <div className={styles.connectionWrapper}>
                 {
                     isAuthenticated ?
-                    <div><span className={styles.connectionText}>Hi <b>{user.username}</b></span> <button className="btn btn-default" onClick={onLogout}>Logout</button></div>
+                    <div><span className={styles.connectionText}>Hi <b>{user.id}</b></span> <button className={"btn btn-default " + styles.logoutButton} onClick={onLogout}>Logout</button></div>
                     :
-                    <div><button className="btn btn-primary" onClick={onLogin}>Login</button></div>
+                    <div><button className={"btn btn-primary " + styles.loginButton} onClick={onLogin}>Login</button></div>
                 }
             </div>
         )
