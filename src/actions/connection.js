@@ -1,6 +1,7 @@
 import * as actionTypes from '../constants/actionTypes';
 import localStorage from 'local-storage';
 import * as authConstants from '../constants/auth'
+import { setTopMovies } from './movie';
 
 function requestLogin() {
     return {
@@ -86,10 +87,20 @@ export function checkInitialAuth(token){
     return dispatch => {
         dispatch(requestLogin());
         return fetch(authConstants.API_USER_DETAILS, {headers: { 'Authorization' : `Bearer ${token}`}})
-            .then((response) => response.json())
-            .then((user) => {
+            .then(function(response){
+                if(!response.ok){
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(function(user){
                 localStorage.set(authConstants.LOCAL_STORAGE_TOKEN_KEY, token);
                 dispatch(receiveLogin(user));
+                dispatch(setTopMovies());
+            })
+            .catch(function(err){
+                // TODO: handle errors
+                console.log(err);
             });
     }
 }
