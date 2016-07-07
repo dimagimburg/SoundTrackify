@@ -1,7 +1,7 @@
 import * as actionTypes from '../constants/actionTypes';
 import localStorage from 'local-storage';
 import * as authConstants from '../constants/auth'
-import { setTopMovies } from './movie';
+import { setTopMovies, setMovies } from './movie';
 
 function requestLogin() {
     return {
@@ -11,12 +11,11 @@ function requestLogin() {
     }
 }
 
-function receiveLogin(user) {
+function receiveLogin() {
     return {
         type: actionTypes.LOGIN_SUCCESS,
         isFetching: false,
-        isAuthenticated: true,
-        user
+        isAuthenticated: true
     }
 }
 
@@ -42,6 +41,13 @@ function receiveLogout() {
         type: actionTypes.LOGOUT_SUCCESS,
         isFetching: false,
         isAuthenticated: false
+    }
+}
+
+function setUser(user){
+    return {
+        type: actionTypes.SET_USER,
+        user
     }
 }
 
@@ -77,7 +83,9 @@ export function loginUser() {
                 .then((response) => response.json())
                 .then((user) => {
                     localStorage.set(authConstants.LOCAL_STORAGE_TOKEN_KEY, token);
-                    dispatch(receiveLogin(user));
+                    dispatch(receiveLogin());
+                    dispatch(setUser(user));
+                    dispatch(setTopMovies());
                 });
         };
     }
@@ -95,7 +103,8 @@ export function checkInitialAuth(token){
             })
             .then(function(user){
                 localStorage.set(authConstants.LOCAL_STORAGE_TOKEN_KEY, token);
-                dispatch(receiveLogin(user));
+                dispatch(receiveLogin());
+                dispatch(setUser(user));
                 dispatch(setTopMovies());
             })
             .catch(function(err){
@@ -109,6 +118,7 @@ export function logoutUser() {
     return dispatch => {
         dispatch(requestLogout());
         localStorage.remove(authConstants.LOCAL_STORAGE_TOKEN_KEY);
+        dispatch(setMovies([]));
         dispatch(receiveLogout());
     }
 }

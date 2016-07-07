@@ -10,7 +10,7 @@ Connection = class Connection extends Component {
         return (
             <div styleName="connection-wrapper">
                 {
-                    isAuthenticated ?
+                    isAuthenticated && user ?
                     <div><span styleName="connection-text">Hi <b>{user.id}</b></span> <button className="btn btn-default" styleName="logout-button" onClick={onLogout}>Logout</button></div>
                     :
                     <div><button className="btn btn-primary" styleName="login-button" onClick={onLogin}>Login</button></div>

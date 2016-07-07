@@ -20,8 +20,15 @@ export default function(state = initialState, action) {
             return logoutSuccess(state, action);
         case actionTypes.LOGOUT_FAILURE:
             return state;
+        case actionTypes.SET_USER:
+            return setUser(state, action);
     }
     return state;
+}
+
+function setUser(state, action){
+    const { user } = action;
+    return { ...state, user };
 }
 
 function loginRequest(state, action){
@@ -30,8 +37,8 @@ function loginRequest(state, action){
 }
 
 function loginSuccess(state, action){
-    const { isFetching, isAuthenticated, user } = action;
-    return { ...state, isFetching: isFetching, isAuthenticated: isAuthenticated, user };
+    const { isFetching, isAuthenticated } = action;
+    return { ...state, isFetching: isFetching, isAuthenticated: isAuthenticated };
 }
 
 function logoutRequest(state, action){
