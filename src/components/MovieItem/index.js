@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
 
 function mapStateToProps(state) {
-    const { selectedMovie } = state;
+    const { selectedMovie } = state.movie;
     return {
         selectedMovie
     }

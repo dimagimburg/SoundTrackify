@@ -22,7 +22,5 @@ function setMovies(state, action) {
 
 function setSelectedMovie(state, action){
     const { selectedMovie } = action;
-    console.log(state);
-    console.log({ ...state, selectedMovie });
     return { ...state, selectedMovie }
 }
