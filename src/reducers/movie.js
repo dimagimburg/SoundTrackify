@@ -2,13 +2,15 @@ import * as actionTypes from '../constants/actionTypes';
 
 const initialState = {
     movies: [],
-    activeMovie: null
+    selectedMovie: null
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
         case actionTypes.SET_MOVIES:
             return setMovies(state, action);
+        case actionTypes.SET_SELECTED_MOVIE:
+            return setSelectedMovie(state, action);
     }
     return state;
 }
@@ -16,4 +18,11 @@ export default function(state = initialState, action) {
 function setMovies(state, action) {
     const { movies } = action;
     return { ...state, movies };
+}
+
+function setSelectedMovie(state, action){
+    const { selectedMovie } = action;
+    console.log(state);
+    console.log({ ...state, selectedMovie });
+    return { ...state, selectedMovie }
 }

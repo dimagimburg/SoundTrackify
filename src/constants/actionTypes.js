@@ -13,3 +13,4 @@ export const SET_USER = 'SET_USER';
 
 // movies
 export const SET_MOVIES = 'SET_MOVIES';
+export const SET_SELECTED_MOVIE = 'SET_SELECTED_MOVIE';

@@ -1,26 +1,23 @@
 import React, {Component} from 'react';
 import styles from './MoviesList.css';
 import CSSModules from 'react-css-modules';
+import MovieItem from '../MovieItem';
 
-let MoviesList;
-
-MoviesList = class extends Component {
+class MoviesList extends Component {
     render() {
-        console.log('props');
-        console.log(this.props);
         const { movies } = this.props;
         return (
             <div>
                 <ul styleName="movies-list">
                     {
                         movies.map(function(movie){
-                            return <li key={movie.id} styleName="movie">{movie.title}</li>
+                            return <MovieItem key={movie.id} movie={movie} />
                         })
                     }
                 </ul>
             </div>
         )
     }
-};
+}
 
 export default CSSModules(MoviesList, styles);

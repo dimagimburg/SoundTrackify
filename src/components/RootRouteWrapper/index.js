@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import MoviesList from '../MoviesList';
+import SpotifyPartWrapper from '../SpotifyPartWrapper';
 import styles from './RootRouteWrapper.css';
 import CSSModules from 'react-css-modules';
 
-let RootRouteWrapper;
 
-RootRouteWrapper = class RootRouteWrapper extends Component {
+class RootRouteWrapper extends Component {
     render() {
         return (
             <div className="container-fluid" styleName="root-container">
@@ -13,7 +13,9 @@ RootRouteWrapper = class RootRouteWrapper extends Component {
                     <div className="col-md-4" styleName="root-left">
                         <MoviesList />
                     </div>
-                    <div className="col-md-8">here the spotify</div>
+                    <div className="col-md-8">
+                        <SpotifyPartWrapper />
+                    </div>
                 </div>
             </div>
         )

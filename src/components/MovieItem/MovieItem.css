@@ -1,0 +1,13 @@
+.movie{
+    padding: 7px;
+}
+
+.movie:hover{
+    color: #fff;
+    cursor: default;
+}
+
+.movie-selected{
+    composes: movie;
+    background: green;
+}

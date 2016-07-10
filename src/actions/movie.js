@@ -23,6 +23,13 @@ export function setMovies(movies){
     }
 }
 
+export function setSelectedMovie(selectedMovie){
+    return {
+        type: actionTypes.SET_SELECTED_MOVIE,
+        selectedMovie
+    }
+}
+
 /**
  * Returns array of top movies
  * */
@@ -39,5 +46,4 @@ function getTopMovies(topMoviesQuantity){
         }));
     }
     return Promise.all(topHundred);
-
 }
