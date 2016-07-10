@@ -1,11 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import SpotifyPartWrapper from './presenter';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../actions';
 
-const SpotifyPartWrapper = () => {
-    return (
-        <div>
-            this is the spotify player
-        </div>
-    );
-};
+function mapStateToProps(state) {
+    const { selectedMovie } = state.movie;
+    return {
+        selectedMovie
+    }
+}
 
-export default SpotifyPartWrapper;
+export default connect(mapStateToProps)(SpotifyPartWrapper);

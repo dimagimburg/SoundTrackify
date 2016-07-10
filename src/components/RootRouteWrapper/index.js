@@ -13,7 +13,7 @@ class RootRouteWrapper extends Component {
                     <div className="col-md-4" styleName="root-left">
                         <MoviesList />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 full-height no-padding">
                         <SpotifyPartWrapper />
                     </div>
                 </div>

@@ -1,13 +1,26 @@
 .movie{
-    padding: 7px;
+    padding: 7px 7px 7px 10px;
+    position: relative;
 }
 
 .movie:hover{
     color: #fff;
     cursor: default;
+    background: rgba(255,255,255,0.07);
 }
 
 .movie-selected{
     composes: movie;
-    background: green;
+    color: #fff;
+    background: rgba(255,255,255,0.03);
+}
+
+.movie-selected:after{
+    content: ' ';
+    position: absolute;
+    width: 3px;
+    background: #90d800;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
