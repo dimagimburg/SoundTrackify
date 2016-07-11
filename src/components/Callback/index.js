@@ -4,9 +4,9 @@ import * as authConstants from '../../constants/auth';
 class Callback extends React.Component {
 
     componentDidMount() {
-        var hash = {};
+        const hash = {};
         window.location.hash.replace(/^#\/?/, '').split('&').forEach((kv) => {
-            var spl = kv.indexOf('=');
+            const spl = kv.indexOf('=');
             if (spl != -1) {
                 hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl+1));
             }

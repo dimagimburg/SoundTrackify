@@ -54,18 +54,18 @@ let setUser = (user) => {
 export let loginUser = () => {
     return dispatch => {
         dispatch(requestLogin());
-        var authURL =
+        const authURL =
             authConstants.AUTHORIZE_URL + "?client_id=" +
             authConstants.CLIENT_ID + "&redirect_uri=" +
             encodeURIComponent(authConstants.REDIRECT_URI) + "" +
             "&response_type=" + authConstants.RESPONSE_TYPE;
 
-        var width = 450,
+        const width = 450,
             height = 730,
             left = (screen.width / 2) - (width / 2),
             top = (screen.height / 2) - (height / 2);
 
-        var w = window.open(
+        const w = window.open(
             authURL,
             'Spotify',
             'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left

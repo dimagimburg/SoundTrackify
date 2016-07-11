@@ -16,6 +16,8 @@
 
 .poster{
     max-width: 100%;
+    border: 8px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
 }
 
 .title{
