@@ -10,7 +10,8 @@ const router = routerMiddleware(browserHistory);
 
 const createStoreWithMiddleware = applyMiddleware(thunk, router, logger)(createStore);
 
-
-export default function configureStore(initialState) {
+let configureStore = (initialState) => {
     return createStoreWithMiddleware(rootReducer, initialState);
-}
+};
+
+export default configureStore;

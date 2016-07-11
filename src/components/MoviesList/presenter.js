@@ -10,7 +10,7 @@ class MoviesList extends Component {
             <div>
                 <ul styleName="movies-list">
                     {
-                        movies.map(function(movie){
+                        movies.map((movie) => {
                             return <MovieItem key={movie.id} movie={movie} />
                         })
                     }

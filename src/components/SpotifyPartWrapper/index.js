@@ -4,11 +4,11 @@ import SpotifyPartWrapper from './presenter';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
 
-function mapStateToProps(state) {
+let mapStateToProps = (state) => {
     const { selectedMovie } = state.movie;
     return {
         selectedMovie
     }
-}
+};
 
 export default connect(mapStateToProps)(SpotifyPartWrapper);

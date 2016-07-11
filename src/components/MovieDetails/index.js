@@ -22,7 +22,7 @@ const MovieDetails = (props) => {
                 <div className="row" styleName="extra-details">
                     <div className="col-md-3">Released: {selectedMovie.release_date}</div>
                     <div className="col-md-2">Rating: {selectedMovie.vote_average}</div>
-                    <div className="col-md-3">Category:  </div>
+                    <div className="col-md-3">Category:  {selectedMovie.genres.join(', ')}</div>
                 </div>
             </div>;
     } else {

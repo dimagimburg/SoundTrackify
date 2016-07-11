@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules';
 import styles from './App.css';
 
 
-function App({ children }) {
+let App = ({ children }) => {
     return (
         <div styleName="app-wrapper">
             <TopNavBar />
@@ -13,6 +13,6 @@ function App({ children }) {
             </div>
         </div>
     );
-}
+};
 
 export default CSSModules(App, styles);

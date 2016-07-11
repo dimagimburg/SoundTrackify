@@ -5,7 +5,7 @@ const initialState = {
     selectedMovie: null
 };
 
-export default function(state = initialState, action) {
+export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_MOVIES:
             return setMovies(state, action);
@@ -15,12 +15,12 @@ export default function(state = initialState, action) {
     return state;
 }
 
-function setMovies(state, action) {
+let setMovies = (state, action) => {
     const { movies } = action;
     return { ...state, movies };
-}
+};
 
-function setSelectedMovie(state, action){
+let setSelectedMovie = (state, action) => {
     const { selectedMovie } = action;
     return { ...state, selectedMovie }
-}
+};

@@ -3,55 +3,55 @@ import localStorage from 'local-storage';
 import * as authConstants from '../constants/auth'
 import { setTopMovies, setMovies } from './movie';
 
-function requestLogin() {
+let requestLogin = () => {
     return {
         type: actionTypes.LOGIN_REQUEST,
         isFetching: true,
         isAuthenticated: false
     }
-}
+};
 
-function receiveLogin() {
+let receiveLogin = () => {
     return {
         type: actionTypes.LOGIN_SUCCESS,
         isFetching: false,
         isAuthenticated: true
     }
-}
+};
 
-function loginError(message) {
+let loginError = (message) => {
     return {
         type: actionTypes.LOGIN_FAILURE,
         isFetching: false,
         isAuthenticated: false,
         message
     }
-}
+};
 
-function requestLogout() {
+let requestLogout = () => {
     return {
         type: actionTypes.LOGOUT_REQUEST,
         isFetching: true,
         isAuthenticated: true
     }
-}
+};
 
-function receiveLogout() {
+let receiveLogout = () => {
     return {
         type: actionTypes.LOGOUT_SUCCESS,
         isFetching: false,
         isAuthenticated: false
     }
-}
+};
 
-function setUser(user){
+let setUser = (user) => {
     return {
         type: actionTypes.SET_USER,
         user
     }
-}
+};
 
-export function loginUser() {
+export let loginUser = () => {
     return dispatch => {
         dispatch(requestLogin());
         var authURL =
@@ -89,9 +89,9 @@ export function loginUser() {
                 });
         };
     }
-}
+};
 
-export function checkInitialAuth(token){
+export let checkInitialAuth = (token) => {
     return dispatch => {
         dispatch(requestLogin());
         return fetch(authConstants.API_USER_DETAILS, {headers: { 'Authorization' : `Bearer ${token}`}})
@@ -112,13 +112,13 @@ export function checkInitialAuth(token){
                 console.log(err);
             });
     }
-}
+};
 
-export function logoutUser() {
+export let logoutUser = () => {
     return dispatch => {
         dispatch(requestLogout());
         localStorage.remove(authConstants.LOCAL_STORAGE_TOKEN_KEY);
         dispatch(setMovies([]));
         dispatch(receiveLogout());
     }
-}
+};

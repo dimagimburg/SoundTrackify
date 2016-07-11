@@ -6,7 +6,7 @@ const initialState = {
     isAuthenticated: localStorage.get('sc_session_token') ? true : false
 };
 
-export default function(state = initialState, action) {
+export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_REQUEST:
             return loginRequest(state, action);
@@ -26,27 +26,27 @@ export default function(state = initialState, action) {
     return state;
 }
 
-function setUser(state, action){
+let setUser = (state, action) => {
     const { user } = action;
     return { ...state, user };
-}
+};
 
-function loginRequest(state, action){
+let loginRequest = (state, action) => {
     const { isFetching, isAuthenticated } = action;
     return { ...state, isFetching: isFetching, isAuthenticated: isAuthenticated };
-}
+};
 
-function loginSuccess(state, action){
+let loginSuccess = (state, action) => {
     const { isFetching, isAuthenticated } = action;
     return { ...state, isFetching: isFetching, isAuthenticated: isAuthenticated };
-}
+};
 
-function logoutRequest(state, action){
+let logoutRequest = (state, action) => {
     const { isFetching, isAuthenticated } = action;
     return { ...state, isFetching: isFetching, isAuthenticated: isAuthenticated };
-}
+};
 
-function logoutSuccess(state, action){
+let logoutSuccess = (state, action) => {
     const { isFetching, isAuthenticated } = action;
     return { ...state, isFetching: isFetching, isAuthenticated: isAuthenticated };
-}
+};

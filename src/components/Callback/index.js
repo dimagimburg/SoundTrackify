@@ -5,7 +5,7 @@ class Callback extends React.Component {
 
     componentDidMount() {
         var hash = {};
-        window.location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
+        window.location.hash.replace(/^#\/?/, '').split('&').forEach((kv) => {
             var spl = kv.indexOf('=');
             if (spl != -1) {
                 hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl+1));
