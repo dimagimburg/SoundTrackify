@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MovieDetails from '../MovieDetails';
+import TracksList from '../TracksList';
 
 class SpotifyPartWrapper extends Component {
     render() {
@@ -8,6 +9,7 @@ class SpotifyPartWrapper extends Component {
             <div className="col-md-12 full-height">
                 <div className="full-height">
                     <MovieDetails selectedMovie={selectedMovie}/>
+                    <TracksList />
                 </div>
             </div>
         );

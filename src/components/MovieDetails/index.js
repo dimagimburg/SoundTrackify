@@ -29,7 +29,7 @@ const MovieDetails = (props) => {
         movieDetailsRender = '';
     }
     return (
-        <div className="full-height">
+        <div>
             {movieDetailsRender}
         </div>
     );

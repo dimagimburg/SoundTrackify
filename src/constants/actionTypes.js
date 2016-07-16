@@ -14,3 +14,7 @@ export const SET_USER = 'SET_USER';
 // movies
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_SELECTED_MOVIE = 'SET_SELECTED_MOVIE';
+
+// tracks
+export const SET_CURRENT_ALBUM = 'SET_CURRENT_ALBUM';
+export const CLEAR_CURRENT_ALBUM = 'CLEAR_CURRENT_ALBUM';

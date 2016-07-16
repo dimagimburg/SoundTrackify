@@ -24,7 +24,6 @@ export default class Wrapper extends Component {
                 <Router history={history}>
                     <Route path="/" component={App}>
                         <IndexRoute component={RootRouteWrapper} />
-                        <Route path="/" component={RootRouteWrapper} />
                         <Route path="/callback" component={Callback} />
                     </Route>
                 </Router>

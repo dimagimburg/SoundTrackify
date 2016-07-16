@@ -1,8 +1,9 @@
 import * as actionTypes from '../constants/actionTypes';
 import {TMDB_API_KEY, TMDB_API_URL} from '../constants/auth';
 import {fetchRequest, fetchReceive} from './fetch';
+import { setTracks } from './track';
 
-export let setTopMovies = () => {
+export const setTopMovies = () => {
     return dispatch => {
         dispatch(fetchRequest());
         getTopMovies(100).then(
@@ -19,21 +20,28 @@ export let setTopMovies = () => {
     }
 };
 
-export let setMovies = (movies) => {
+export const setMovies = (movies) => {
     return {
         type: actionTypes.SET_MOVIES,
         movies
     }
 };
 
-export let setSelectedMovie = (selectedMovie) => {
+export const selectMovie  = (selectedMovie) => {
+    return dispatch => {
+        dispatch(setSelectedMovie(selectedMovie));
+        dispatch(setTracks(selectedMovie));
+    }
+};
+
+export const setSelectedMovie = (selectedMovie) => {
     return {
         type: actionTypes.SET_SELECTED_MOVIE,
         selectedMovie
     }
 };
 
-export let setGeners = (movies) => {
+export const setGeners = (movies) => {
     return fetch(`${TMDB_API_URL}/genre/movie/list?api_key=${TMDB_API_KEY}`)
         .then((response) => response.json())
         .then((response) => {
@@ -55,7 +63,7 @@ export let setGeners = (movies) => {
 /**
  * Returns array of top movies
  * */
-let getTopMovies = (topMoviesQuantity) => {
+const getTopMovies = (topMoviesQuantity) => {
     const numberOfPages = topMoviesQuantity / 20; // 20 is default tmdb movies per page
     let topHundred = [];
     for(let i = 0; i < numberOfPages; i++){

@@ -1,4 +1,5 @@
-import { setTopMovies, setSelectedMovie } from './movie';
+import { setTopMovies, selectMovie } from './movie';
+import { setTracks } from './track';
 import { loginUser, logoutUser, checkInitialAuth } from './connection';
 
 export {
@@ -6,5 +7,6 @@ export {
     logoutUser,
     checkInitialAuth,
     setTopMovies,
-    setSelectedMovie
+    selectMovie,
+    setTracks
 };
